@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import ProfileImg from "../../media/images/profile.jpg";
 import Select from "react-select";
@@ -8,12 +8,20 @@ import GeneralDetails from "./GeneralDetails";
 import PersonalDetails from "./PersonalDetails";
 import AddressDetails from "./AddressDetails";
 import SocialDetails from "./SocialDetails";
+import { ToastContainer, toast } from "react-toastify";
 function Profile() {
   const languages = [
     { label: "English(US)", value: "en", img: EnglishLangIcon },
     { label: "Español", value: "sp", img: SpanishLangIcon },
   ];
   const [editEnabled, setEditEnabled] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+  const tabs = [
+    { name: "General", component:<GeneralDetails/> },
+    { name: "Personal" , component:<PersonalDetails/>},
+    { name: "Address", component:<AddressDetails/> },
+    { name: "Social", component:<SocialDetails/> },
+  ];
   return (
     <div className="row g-0 profile-container align-items-center justify-content-center vh-100">
       <div className="col-10 row g-0 border rounded-3">
@@ -53,22 +61,29 @@ function Profile() {
                 }}
               />
             </div>
+            <div className="col-10 row g-0 mt-3 themes-container">
+              <h6>Themes</h6>
+              <div className="col-2"><div className="theme-1"></div></div>
+              <div className="col-2 offset-1"><div className="theme-2"></div></div>
+              <div className="col-2 offset-1"><div className="theme-3"></div></div>
+            </div>
             {/* <div className="col-5">
             </div> */}
           </div>
         </div>
         <div className="col-8 border-start">
           <div className="row g-0 profile-tabs">
-            <div className="col-3 active-tab">General</div>
-            <div className="col-3">Personal Details</div>
-            <div className="col-3">Address</div>
-            <div className="col-3">Social</div>
+            {tabs.map((tab, index) => (
+              <div className={`col-3 ${index===activeTab ? 'active-tab':null}`} onClick={()=>setActiveTab(index)} >{tab.name}</div>
+            ))}
+          </div>
+          <div>
+            <ToastContainer/>
           </div>
           <div className="row g-0 mt-3 p-3">
-            {/* <GeneralDetails/> */}
-            {/* <PersonalDetails /> */}
-            {/* <AddressDetails/> */}
-            <SocialDetails />
+            {
+              tabs.at(activeTab).component
+            }
             <div className="col-12 row g-0 mt-5 justify-content-end">
               {editEnabled ? (
                 <>
