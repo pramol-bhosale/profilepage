@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import InputField from "./InputField";
 
-function GeneralDetails() {
+function GeneralDetails({data,disable}) {
   return (
     <>
       <InputField
@@ -10,6 +10,7 @@ function GeneralDetails() {
         id={"userName"}
         placeholder={"userName"}
         label={"UserName"}
+        value={data.userName}
         onChangeF={(e) => {
           console.log(e);
         }}
@@ -20,6 +21,7 @@ function GeneralDetails() {
         id={"email"}
         placeholder={"email"}
         label={"Email"}
+        value={data.email}
         onChangeF={(e) => {
           console.log(e);
         }}

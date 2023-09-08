@@ -1,6 +1,6 @@
 import React from "react";
 
-function PersonalDetails() {
+function PersonalDetails({data}) {
   return (
     <>
       <div className="col-3 form-floating">
@@ -8,6 +8,7 @@ function PersonalDetails() {
           type="text"
           id="firstName"
           className="form-control"
+          value={data.firstName}
           placeholder="firstName"
         />
         <label htmlFor="firstName">FirstName</label>
@@ -18,6 +19,7 @@ function PersonalDetails() {
           id="middleName"
           className="form-control"
           placeholder="middleName"
+          value={data.middleName}
         />
         <label htmlFor="middleName">MiddleName</label>
       </div>
@@ -27,6 +29,8 @@ function PersonalDetails() {
           id="lastName"
           className="form-control"
           placeholder="lastName"
+          value={data.lastName}
+
         />
         <label htmlFor="lastName">LastName</label>
       </div>
@@ -37,6 +41,7 @@ function PersonalDetails() {
           id="phoneNumber"
           className="form-control"
           placeholder="phoneNumber"
+          value={data.phoneNumber}
         />
         <label htmlFor="phoneNumber">Phone Number</label>
       </div>

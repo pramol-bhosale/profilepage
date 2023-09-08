@@ -1,6 +1,6 @@
 import React from "react";
 
-function SocialDetails() {
+function SocialDetails({data}) {
   return (
     <>
       <div className="col-10">
@@ -11,6 +11,7 @@ function SocialDetails() {
           id="facebookid"
           className="form-control"
           placeholder="facebookid"
+          value={data.facebookId}
         />
         <label htmlFor="facebookid">Facebook Profile</label>
         </div>
@@ -23,6 +24,7 @@ function SocialDetails() {
           id="linkedinprofile"
           className="form-control"
           placeholder="linkedinprofile"
+          value={data.linkedinprofileurl}
         />
         <label htmlFor="linkedinprofile">Linkedin Profile URL</label>
         </div>

@@ -10,17 +10,48 @@ import AddressDetails from "./AddressDetails";
 import SocialDetails from "./SocialDetails";
 import { ToastContainer, toast } from "react-toastify";
 function Profile() {
+  const userData = {
+    general: {
+      userName: "pramol",
+      email: "pramol@example.com",
+    },
+    address: {
+      addressLine1: "Chikmahud",
+      addressLine2: "Sangola",
+      city: "mahud",
+      state: "maharashtra",
+    },
+    personal: {
+      firstName: "pramol",
+      middleName: "Manik",
+      lastName: "bhosale",
+      phoneNumber: "1221212123",
+    },
+    social: {
+      facebookId: "pramol-bhosale",
+      linkedinprofileurl: "https://linkedin.com/pramol",
+    },
+  };
   const languages = [
     { label: "English(US)", value: "en", img: EnglishLangIcon },
     { label: "Español", value: "sp", img: SpanishLangIcon },
   ];
   const [editEnabled, setEditEnabled] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [showDialog, setShowDialog] = useState(false);
   const tabs = [
-    { name: "General", component:<GeneralDetails/> },
-    { name: "Personal" , component:<PersonalDetails/>},
-    { name: "Address", component:<AddressDetails/> },
-    { name: "Social", component:<SocialDetails/> },
+    {
+      name: "General",
+      component: (
+        <GeneralDetails data={userData.general} disabled={editEnabled} />
+      ),
+    },
+    {
+      name: "Personal",
+      component: <PersonalDetails data={userData.personal} />,
+    },
+    { name: "Address", component: <AddressDetails data={userData.address} /> },
+    { name: "Social", component: <SocialDetails data={userData.social} /> },
   ];
   return (
     <div className="row g-0 profile-container align-items-center justify-content-center vh-100">
@@ -63,9 +94,15 @@ function Profile() {
             </div>
             <div className="col-10 row g-0 mt-3 themes-container">
               <h6>Themes</h6>
-              <div className="col-2"><div className="theme-1"></div></div>
-              <div className="col-2 offset-1"><div className="theme-2"></div></div>
-              <div className="col-2 offset-1"><div className="theme-3"></div></div>
+              <div className="col-2">
+                <div className="theme-1"></div>
+              </div>
+              <div className="col-2 offset-1">
+                <div className="theme-2"></div>
+              </div>
+              <div className="col-2 offset-1">
+                <div className="theme-3"></div>
+              </div>
             </div>
             {/* <div className="col-5">
             </div> */}
@@ -74,20 +111,23 @@ function Profile() {
         <div className="col-8 border-start">
           <div className="row g-0 profile-tabs">
             {tabs.map((tab, index) => (
-              <div className={`col-3 ${index===activeTab ? 'active-tab':null}`} onClick={()=>setActiveTab(index)} >{tab.name}</div>
+              <div
+                className={`col-3 ${index === activeTab ? "active-tab" : null}`}
+                onClick={() => setActiveTab(index)}
+              >
+                {tab.name}
+              </div>
             ))}
           </div>
           <div>
-            <ToastContainer/>
+            <ToastContainer />
           </div>
           <div className="row g-0 mt-3 p-3">
-            {
-              tabs.at(activeTab).component
-            }
+            {tabs.at(activeTab).component}
             <div className="col-12 row g-0 mt-5 justify-content-end">
               {editEnabled ? (
                 <>
-                  <button className="update-btn col-3 rounded-2 p-2">
+                  <button className="update-btn col-3 rounded-2 p-2" onClick={()=>{setShowDialog(true)}}>
                     UPDATE
                   </button>
                   <button
@@ -108,6 +148,20 @@ function Profile() {
                 </button>
               )}
             </div>
+            {showDialog ? (
+              <dialog open className="edit-response-popup rounded-3">
+                <h6 className="text-center">Records updates successfully</h6>
+                <button
+                  className="rounded-2 py-1 px-4 mt-3"
+                  onClick={(e) => {
+                    setShowDialog(false);
+                    setEditEnabled(false);
+                  }}
+                >
+                  ok
+                </button>
+              </dialog>
+            ) : null}
           </div>
         </div>
       </div>

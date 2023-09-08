@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddressDetails() {
+function AddressDetails({data}) {
   return (
     <>
       <div className="col-4 form-floating">
@@ -9,6 +9,7 @@ function AddressDetails() {
           id="addressLine1"
           className="form-control"
           placeholder="addressline1"
+          value={data.addressLine1}
         />
         <label htmlFor="addressLine1">Address Line 1</label>
       </div>
@@ -18,6 +19,8 @@ function AddressDetails() {
           id="addressLine2"
           className="form-control"
           placeholder="addressLine2"
+          value={data.addressLine2}
+
         />
         <label htmlFor="addressLine2">Address Line 2</label>
       </div>
@@ -28,6 +31,7 @@ function AddressDetails() {
             id="city"
             className="form-control"
             placeholder="city"
+            value={data.city}
           />
           <label htmlFor="city">City</label>
         </div>
@@ -37,6 +41,8 @@ function AddressDetails() {
             id="state"
             className="form-control"
             placeholder="state"
+          value={data.state}
+
           />
           <label htmlFor="state">State</label>
         </div>
