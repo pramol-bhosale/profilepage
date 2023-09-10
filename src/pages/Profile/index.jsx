@@ -43,13 +43,9 @@ function Profile() {
   const tabs = [
     {
       name: "General",
-      component:(disabled)=>{
-        console.log('in funcation')
-        console.log(disabled)
-        return  (
-          <GeneralDetails data={userData.general} disabled={disabled} />
-        )
-      },
+      component:  (
+          <GeneralDetails data={userData.general} disabled={!editEnabled} />
+        ),
     },
     {
       name: "Personal",
@@ -126,7 +122,7 @@ function Profile() {
             ))}
           </div>
           <div className="row g-0 mt-3 p-3">
-            {tabs.at(activeTab).component(!editEnabled)}
+            {tabs.at(activeTab).component}
             <div className="col-12 row g-0 mt-5 justify-content-end">
               {editEnabled ? (
                 <>
