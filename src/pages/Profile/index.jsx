@@ -32,6 +32,7 @@ function Profile() {
       linkedinprofileurl: "https://linkedin.com/pramol",
     },
   };
+  const [theme, setTheme]= useState('theme-3')
   const languages = [
     { label: "English(US)", value: "en", img: EnglishLangIcon },
     { label: "Español", value: "sp", img: SpanishLangIcon },
@@ -42,9 +43,13 @@ function Profile() {
   const tabs = [
     {
       name: "General",
-      component: (
-        <GeneralDetails data={userData.general} disabled={editEnabled} />
-      ),
+      component:(disabled)=>{
+        console.log('in funcation')
+        console.log(disabled)
+        return  (
+          <GeneralDetails data={userData.general} disabled={disabled} />
+        )
+      },
     },
     {
       name: "Personal",
@@ -54,8 +59,8 @@ function Profile() {
     { name: "Social", component: <SocialDetails data={userData.social} /> },
   ];
   return (
-    <div className="row g-0 profile-container align-items-center justify-content-center vh-100">
-      <div className="col-10 row g-0 border rounded-3">
+    <div className={`row g-0 profile-container align-items-center justify-content-center vh-100 profile-container ${theme}`}>
+      <div className="col-10 row g-0 border rounded-3 child-container">
         <div className="col-4 py-3">
           <div className="text-center">
             <img
@@ -66,9 +71,10 @@ function Profile() {
             <h6 className="mt-2">CodeDiggy</h6>
           </div>
           <div className="row g-0 justify-content-end my-4 px-3">
-            <button className="col-2 profile-img-action-btn me-1">
-              Change
-            </button>
+            <input type="file" id="file-input" className="d-none" onChange={(e)=>{console.log(e)}}/>
+            <label className="col-2 profile-img-action-btn me-1" htmlFor="file-input">
+              Change 
+            </label>
             <button className="col-2 profile-img-action-btn">Delete</button>
           </div>
           {/* <div className="row g-0 justify-content-around mt-3">
@@ -94,14 +100,14 @@ function Profile() {
             </div>
             <div className="col-10 row g-0 mt-3 themes-container">
               <h6>Themes</h6>
-              <div className="col-2">
-                <div className="theme-1"></div>
+              <div className="col-2" onClick={()=>setTheme('theme-1')}>
+                <div className="theme-1-box"></div>
               </div>
-              <div className="col-2 offset-1">
-                <div className="theme-2"></div>
+              <div className="col-2 offset-1" onClick={()=>setTheme('theme-2')}>
+                <div className="theme-2-box"></div>
               </div>
-              <div className="col-2 offset-1">
-                <div className="theme-3"></div>
+              <div className="col-2 offset-1" onClick={()=>setTheme('theme-3')}>
+                <div className="theme-3-box"></div>
               </div>
             </div>
             {/* <div className="col-5">
@@ -119,11 +125,8 @@ function Profile() {
               </div>
             ))}
           </div>
-          <div>
-            <ToastContainer />
-          </div>
           <div className="row g-0 mt-3 p-3">
-            {tabs.at(activeTab).component}
+            {tabs.at(activeTab).component(!editEnabled)}
             <div className="col-12 row g-0 mt-5 justify-content-end">
               {editEnabled ? (
                 <>

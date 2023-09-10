@@ -8,10 +8,10 @@
   background-color: white;
   border: 1px solid grey;
   border-radius: 5px;
-  color: #5750d4;
   padding: 3px;
   font-size: 13px;
   font-weight: bold;
+  cursor: pointer;
 }
 .lang-icon {
   width: 20px;
@@ -26,8 +26,7 @@
   cursor: pointer;
 }
 .profile-tabs .active-tab {
-  border-bottom: 3px solid #5750d4;
-  background-color: white;
+   background-color: white;
 }
 /* .edit-btn{
     border: none;
@@ -38,11 +37,9 @@
 .update-btn,
 .edit-btn {
   color: white;
-  background-color: #5750d4;
   border: none;
 }
 .cancel-btn {
-  color: #5750d4;
   border: none;
 }
 .themes-container>div{
@@ -56,13 +53,13 @@
     border-radius:5px;
     cursor: pointer;
 }
-.theme-1{
+.theme-1-box{
     background-color: #8ED82D;
 }
-.theme-2{
+.theme-2-box{
     background-color: #FF3D43;
 }
-.theme-3{
+.theme-3-box{
     background-color: #5750d4;
 }
 .edit-response-popup{
@@ -76,5 +73,60 @@
 .edit-response-popup button{
   border: none;
   color: white;
+}
+.profile-container{
+  background-color: #F8FAFE;
+}
+.child-container{
+  background-color: white;
+}
+.active-theme{
+  border: 1px solid black;
+}
+.theme-1 .profile-img-action-btn{
+  color: #8ED82D;
+}
+.theme-2 .profile-img-action-btn{
+  color: #ff3D43;
+}
+.theme-3 .profile-img-action-btn{
+  color: #5750d4;
+}
+.theme-1 .profile-tabs .active-tab {
+  border-bottom: 3px solid #8ED82D;
+}
+.theme-2 .profile-tabs .active-tab {
+  border-bottom: 3px solid #ff3D43;
+}
+.theme-3 .profile-tabs .active-tab {
+  border-bottom: 3px solid #5750d4;
+}
+.theme-1 .update-btn,.theme-1 .edit-btn{
+  background-color: #8ED82D;
+}
+.theme-1 .cancel-btn{
+  color: #8ED82D;
+}
+
+.theme-2 .update-btn,.theme-2 .edit-btn{
+  background-color: #ff3D43;
+}
+.theme-2 .cancel-btn{
+  color: #ff3D43;
+}
+
+.theme-3 .update-btn,.theme-3 .edit-btn{
+  background-color: #5750d4;
+}
+.theme-3 .cancel-btn{
+  color: #5750d4;
+}
+.theme-1 .edit-response-popup button{
+  background-color: #8ED82D;
+}
+.theme-2 .edit-response-popup button{
+  background-color: #ff3D43;
+}
+.theme-3 .edit-response-popup button{
   background-color: #5750d4;
 }

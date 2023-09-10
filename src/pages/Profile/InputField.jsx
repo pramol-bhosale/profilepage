@@ -1,9 +1,10 @@
 import React from 'react'
 
-function InputField({classes,type,id,placeholder,label,value,onChangeF}) {
+function InputField({classes,type,id,placeholder,label,value,disable,onChangeF}) {
+  console.log(disable)
   return (
     <div className={`${classes} form-floating`}>
-        <input type={type} className="form-control" id={id} placeholder={placeholder} value={value} onChange={(e)=>{onChangeF(e)}}/>
+        <input type={type} className="form-control" id={id} placeholder={placeholder} onChange={(e)=>{onChangeF(e)}} defaultValue={value} disabled={disable}/>
         <label htmlFor={id}>{label}</label>
     </div>
   )
