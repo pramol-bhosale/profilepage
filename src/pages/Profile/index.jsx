@@ -12,8 +12,8 @@ import { ToastContainer, toast } from "react-toastify";
 function Profile() {
   const userData = {
     general: {
-      userName: "pramol",
-      email: "pramol@example.com",
+      userName: "Codediggy",
+      email: "Codediggy@example.com",
     },
     address: {
       addressLine1: "Chikmahud",
@@ -22,13 +22,13 @@ function Profile() {
       state: "maharashtra",
     },
     personal: {
-      firstName: "pramol",
-      middleName: "Manik",
+      firstName: "Pradip",
+      middleName: "Pramol",
       lastName: "bhosale",
       phoneNumber: "1221212123",
     },
     social: {
-      facebookId: "pramol-bhosale",
+      facebookId: "pramol",
       linkedinprofileurl: "https://linkedin.com/pramol",
     },
   };
